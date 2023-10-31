@@ -1,0 +1,37 @@
+<div class="container mt-3">
+  <div class="input-group mb-3">
+   
+    <input type="text" class="form-control" placeholder="buscar" aria-label="buscar" aria-describedby="basic-addon2" [(ngModel)]="busqueda" (ngModelChange)="onBusquedaChange()">
+  
+    <button type="button"  class="input-group-text" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onCreate()">crear</button> </div>
+   <app-modal></app-modal>
+ 
+ 
+<table  class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Edad</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+   
+    <tr *ngFor="let objeto of lista2; let i=index">
+      <th scope="row">{{i}}</th>
+      <td >{{objeto.nombre}}</td>
+      <td>{{objeto.edad}}</td>
+      <td>{{objeto.telefono}}</td>
+      <td>
+        <div class="btn-group me-2" role="group" aria-label="First group">
+        <button type="button" class="btn btn-outline-secondary " data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="onEdit(objeto)">Editar</button>
+        <button type="submit" class="btn btn-outline-dark" (click)="onDelete(objeto.id)">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

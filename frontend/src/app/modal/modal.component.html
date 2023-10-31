@@ -1,0 +1,47 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Crear usuario</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="clear()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit(this.objeto.id)" id="form">
+         
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" formControlName="nombre" class="form-control" id="nombre">
+                <div class="alert alert-danger" *ngIf="nombreControl.invalid && nombreControl.touched">
+                  <div *ngIf="nombreControl.hasError('required')">El campo nombre es obligatorio</div>
+                  <div *ngIf="nombreControl.hasError('pattern')">El campo nombre no es válido (solo se permiten letras y espacios)</div>
+                  <div *ngIf="nombreControl.hasError('minlength')">El campo nombre debe tener al menos 10 caracteres</div>
+                  <div *ngIf="nombreControl.hasError('maxlength')">El campo nombre no debe tener más de 60 caracteres</div>
+              </div>
+               </div>
+               <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" formControlName="edad" class="form-control" id="edad"  >
+                <div class="alert alert-danger" *ngIf="edadControl.invalid && edadControl.touched">
+                  <div *ngIf="edadControl.hasError('required')">El campo edad es obligatorio</div>
+                  <div *ngIf="edadControl.hasError('min')">La edad mínima es 18 años</div>
+                  <div *ngIf="edadControl.hasError('max')">La edad máxima es 99 años</div>
+              </div>
+               </div>
+               <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="text" formControlName="telefono" class="form-control" id="telefono" >
+                <div class="alert alert-danger" *ngIf="telefonoControl.invalid && telefonoControl.touched">
+                  <div *ngIf="telefonoControl.hasError('required')">El campo teléfono es obligatorio</div>
+                  <div *ngIf="telefonoControl.hasError('pattern')">El campo teléfono no es válido (solo se permiten caracteres de uso telefonico)</div>
+              </div>
+               </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+         
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clear()">Close</button>
+          <button type="submit" form="form" class="btn btn-primary" [disabled]="form.invalid"  data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
